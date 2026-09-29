@@ -1,0 +1,115 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fold-cp-ops"
+dynamic = ["version"]
+description = "A2A-fused distributed TriMul kernels (CuTe-DSL / NVSHMEM) for SM90"
+requires-python = ">=3.10"
+# cutlass-dsl is PINNED at 4.4.2; the move to 4.7.0 was investigated and REJECTED 2026-08-27 for two
+# independent reasons: the front A2A GEMM runs 3.23x slower (2.53x end-to-end), and layernorm_gemm
+# MISCOMPUTES at D=512 -- a declared TriMul width -- on 4.5.2 and later. CUDA 13 only; nothing here is
+# tested on cu12. Details in docs/cuteDSL_version_upgrade.md.
+#
+# The `[cu13]` EXTRA IS DELIBERATELY ABSENT -- do not add it back. It installs a SECOND wheel
+# (-libs-cu13) that OVERWRITES 92 of -libs-base's files including the MLIR compiler, swapping the
+# backend (PTX ISA 8.8 -> 9.1). That backend fences NVSHMEM's IBGDA lock inside its spin loop: 2.4x
+# on the A2A front kernel, invisible to pip (same version). docs/cuteDSL_version_a2a_slowdown.md.
+dependencies = [
+    "nvidia-cutlass-dsl==4.4.2",
+    "nvidia-nvshmem-cu13==3.7.0",
+    "nvshmem4py-cu13==0.3.1",
+    "torch",
+    "apache-tvm-ffi>=0.1.6,<0.2",
+    "torch-c-dlpack-ext",
+    "msgpack==1.2.2",
+]
+classifiers = [
+    "Environment :: GPU :: NVIDIA CUDA",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "pytest",
+    "pytest-xdist",
+    # Deadlock fuse: `pytest --timeout=<sec> -x` kills a hung rank WITH a faulthandler stack dump, so
+    # the log names which rank is stuck where. Declared because it was measured ABSENT from every env
+    # this project uses -- so that fail-fast has never actually been available, and every hang so far
+    # was attributed by an outer `timeout -k -s ABRT`, which costs the full bound every time.
+    "pytest-timeout",
+    "ruff",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["fold_cp_ops*"]
+
+[tool.setuptools.dynamic]
+# Read from the leaf `_version` module, not the package root: setuptools' attr directive falls back
+# to IMPORTING the module when it cannot read the literal statically, and importing the package root
+# at build time would drag in torch/cutlass.  `_version.py` is a bare literal assignment.
+version = { attr = "fold_cp_ops._version.__version__" }
+
+[tool.uv]
+managed = true
+environments = ["sys_platform == 'linux' and platform_machine == 'x86_64'"]
+# Match the CUDA 13 / NVSHMEM override sequence documented in README.md.
+override-dependencies = [
+    "nvidia-nvshmem-cu13==3.7.0",
+    "torch==2.13.0+cu130",
+]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu130" }
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[tool.ruff]
+line-length = 100
+# `trash_to_be_removed/` holds files on their way out (see the deletion HARD RULE in CLAUDE.md). It
+# is deliberately IN-TREE, so every tool that walks the repo has to be told to skip it -- otherwise
+# a file "deleted" by moving it there still lints, still collects, and still answers a grep.
+exclude = [".#*", "trash_to_be_removed"]
+
+[tool.ruff.lint]
+ignore = [
+    "E731",  # do not assign a lambda expression, use a def
+    "E741",  # Do not use variables named 'I', 'O', or 'l'
+    "F841",  # local variable is assigned to but never used
+    # Stylistic; used deliberately ~47x in the migrated distributed tests for compact per-rank setup.
+    # Ignored rather than rewritten -- hand-splitting 47 sites inside the migration gate's own test
+    # files risks a real edit. Relaxes ONE rule repo-wide; every file stays linted for everything else.
+    "E702",  # multiple statements on one line (semicolon)
+]
+
+[tool.pytest.ini_options]
+# Default (`prepend`) import mode: test modules are keyed by BASENAME, so no two source files may
+# share one -- see the test-naming HARD RULE in CLAUDE.md.
+
+# `pythonpath = ["."]` resolves `fold_cp_ops`, `benchmark` and `tests.*` from a fresh clone with no
+# install step; `.` anchors to THIS FILE, not the cwd. Two consequences: a source tree ALWAYS beats an
+# installed wheel (CI validating the artifact must run without the source, or pass `-o pythonpath=`),
+# and `PYTHONPATH=<other-tree>` is silently outranked -- A/B needs a separate checkout, not sys.path.
+pythonpath = ["."]
+# The pytest default list PLUS `trash_to_be_removed`. This option REPLACES the default rather than
+# extending it, so the defaults are restated on purpose. The trash entry is the one that matters: it is
+# IN-TREE, so without it a test 'deleted' by moving there still collects, and a stale module stays
+# importable by basename under `prepend` -- a deleted file returning as an 'import file mismatch'.
+norecursedirs = ["*.egg", ".*", "_darcs", "build", "CVS", "dist", "node_modules", "venv", "{arch}",
+                 "trash_to_be_removed"]
+markers = [
+    "matrix_exempt(reason): this test is outside its kernel's declared test matrix; the reason is enforced by tests/testing/test_kernel_matrix.py",
+    "matrix_violation(detail): attached at collection to tests in a module that breaks the kernel-matrix rules; tests/conftest.py fails them",
+    "numeric_exempt(reason): this test makes no element-wise numerical comparison and says why; the reason is enforced by fold_cp_ops/testing/numeric_guard.py",
+    "numeric_violation(detail): attached at collection to tests in a module holding an unsanctioned comparison; tests/conftest.py fails them",
+    "numeric_required: attached at collection to a matrix-parametrized test, which must run an assertion from fold_cp_ops.testing.numerics",
+    "collective_violation(detail): attached at collection to tests under tests/distributed/ holding a bare pytest.skip; tests/conftest.py fails them",
+    "template_param_violation(detail): attached at collection to tests in a module that configures a kernel functor by assigning to it after construction; tests/conftest.py fails them",
+]

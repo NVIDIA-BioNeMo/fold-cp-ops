@@ -1,0 +1,285 @@
+{
+  "schema": 1,
+  "kernel": "gemm",
+  "measured_on": "4x H100 80GB HBM3 SXM5 (NVSwitch, NV18) + Intel Xeon Platinum 8480CL; run PINNED TO GPU 0 (CUDA_VISIBLE_DEVICES=0), the other three idle. CLOCKS FREE-RUNNING (no nvidia-smi -lgc) -- deliberately, so pins and test runs sample the same distribution; see calibration._CLOCKS_ARE_FREE_RUNNING. N_SAMPLES_PIN_TIME=15, tests use N_SAMPLES_TEST_TIME=9. Cells timed mode=device; ('dispatch', ...) pins are dimensionless ratios to a bare GemmSm90 launch. HARVESTED FROM ONE WHOLE-SUITE RUN (CPO_PERF_MEASURE=1 pytest tests/perf/ -q -s), not per file and not per cell: sustained load moves the free-running clock, so a pin taken on a quiet GPU is a pin from a different distribution than the gate's. NOTE this is a DIFFERENT HOST from the 2026-08-12 pins (Xeon Silver 4314), so host-bound and dispatch-ratio cells move. Measured 2026-08-13.",
+  "cells": [
+    {
+      "key": [
+        "shape",
+        4096,
+        2048,
+        2048,
+        1
+      ],
+      "median_ms": 0.066784,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "shape",
+        1001,
+        2048,
+        2048,
+        1
+      ],
+      "median_ms": 0.022848,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "shape",
+        4096,
+        2048,
+        64,
+        1
+      ],
+      "median_ms": 0.012,
+      "rel_std": 0.005086
+    },
+    {
+      "key": [
+        "shape",
+        301,
+        200,
+        256,
+        3
+      ],
+      "median_ms": 0.008576,
+      "rel_std": 0.00953
+    },
+    {
+      "key": [
+        "shape",
+        128,
+        256,
+        256,
+        7
+      ],
+      "median_ms": 0.00848,
+      "rel_std": 0.007819
+    },
+    {
+      "key": [
+        "shape",
+        1000000,
+        512,
+        128,
+        1
+      ],
+      "median_ms": 0.500768,
+      "rel_std": 0.027486
+    },
+    {
+      "key": [
+        "shape",
+        1000000,
+        1024,
+        256,
+        1
+      ],
+      "median_ms": 1.181264,
+      "rel_std": 0.042885
+    },
+    {
+      "key": [
+        "shape",
+        1000000,
+        768,
+        384,
+        1
+      ],
+      "median_ms": 1.253616,
+      "rel_std": 0.0574
+    },
+    {
+      "key": [
+        "epi",
+        "none",
+        "one"
+      ],
+      "median_ms": 0.03712,
+      "rel_std": 0.00747
+    },
+    {
+      "key": [
+        "epi",
+        "none",
+        "scalar"
+      ],
+      "median_ms": 0.046944,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "epi",
+        "row",
+        "one"
+      ],
+      "median_ms": 0.039168,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "epi",
+        "row",
+        "scalar"
+      ],
+      "median_ms": 0.050016,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "epi",
+        "col",
+        "one"
+      ],
+      "median_ms": 0.03808,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "epi",
+        "col",
+        "scalar"
+      ],
+      "median_ms": 0.048928,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "epi",
+        "both",
+        "one"
+      ],
+      "median_ms": 0.039552,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "epi",
+        "both",
+        "scalar"
+      ],
+      "median_ms": 0.050224,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "dispatch",
+        "gemm"
+      ],
+      "median_ms": 1.314917,
+      "rel_std": 0.005
+    }
+  ],
+  "autotune": {
+    "autotune_reference": [
+      {
+        "key": [
+          4096,
+          2048,
+          2048,
+          1
+        ],
+        "value": [
+          [
+            128,
+            256
+          ],
+          false,
+          [
+            1,
+            2
+          ]
+        ]
+      },
+      {
+        "key": [
+          1001,
+          2048,
+          2048,
+          1
+        ],
+        "value": [
+          [
+            128,
+            128
+          ],
+          true,
+          [
+            2,
+            1
+          ]
+        ]
+      },
+      {
+        "key": [
+          4096,
+          2048,
+          64,
+          1
+        ],
+        "value": [
+          [
+            128,
+            256
+          ],
+          false,
+          [
+            1,
+            2
+          ]
+        ]
+      }
+    ],
+    "autotune_baseline_key": [
+      {
+        "key": [
+          4096,
+          2048,
+          2048,
+          1
+        ],
+        "value": [
+          "shape",
+          4096,
+          2048,
+          2048,
+          1
+        ]
+      },
+      {
+        "key": [
+          1001,
+          2048,
+          2048,
+          1
+        ],
+        "value": [
+          "shape",
+          1001,
+          2048,
+          2048,
+          1
+        ]
+      },
+      {
+        "key": [
+          4096,
+          2048,
+          64,
+          1
+        ],
+        "value": [
+          "shape",
+          4096,
+          2048,
+          64,
+          1
+        ]
+      }
+    ],
+    "tie_band": 1.1,
+    "dispatch_overhead_ceiling_us": 25.0
+  }
+}

@@ -1,0 +1,82 @@
+.DS_Store
+.claude/
+.vscode/
+worktrees/
+
+# Core dumps. A killed distributed rank drops one of these in its CWD -- measured: a hung nvshmem
+# arm reaped at its timeout left `core.pt_nccl_watchdg.<t>.<pid>` at **1.3 GB** in a worktree root,
+# untracked and one `git add .` away from a commit nobody could push. The NCCL watchdog aborting on
+# a hard kill is expected, so this will recur every time an experiment arm is reaped.
+core.*
+
+# Compile artifacts, never source
+*.ptx
+*.sass
+*.cubin
+*.ncu-rep
+*.nsys-rep
+*.sqlite
+compiled_cache.db
+
+### Python ###
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+sdist/
+wheels/
+*.egg-info/
+*.egg
+.installed.cfg
+MANIFEST
+pyrightconfig.json
+
+# Testing / linting / typing caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+nosetests.xml
+*.cover
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Jupyter / IPython
+.ipynb_checkpoints
+profile_default/
+ipython_config.py
+
+# docs (only keep release-related docs)
+docs/*.md
+docs/*.bak
+docs/*.md.*
+*.bak
+
+trash_to_be_removed/
+
+/.bash_profile
+/.bashrc
+/.gitconfig
+/.gitmodules
+/.idea
+/.mcp.json
+/.profile
+/.ripgreprc
+/.zprofile
+/.zshrc

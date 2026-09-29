@@ -1,0 +1,9 @@
+# docker/Dockerfile builds from the REPO ROOT so it can read pyproject.toml. The repo is not baked
+# into the image, so the context is deny-all plus the four files the build reads. Without this the
+# daemon tars 1.5 GB (1.4 GB of it profiling/) on every build. A new COPY needs a new line here.
+**
+
+!pyproject.toml
+!LICENSE
+!fold_cp_ops/_version.py
+!docker/image_gate.py

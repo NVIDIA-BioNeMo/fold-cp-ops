@@ -1,0 +1,247 @@
+{
+  "schema": 1,
+  "kernel": "gemm_sm90",
+  "measured_on": "4x H100 80GB HBM3 SXM5 (NVSwitch, NV18) + Intel Xeon Platinum 8480CL; run PINNED TO GPU 0 (CUDA_VISIBLE_DEVICES=0), the other three idle. CLOCKS FREE-RUNNING (no nvidia-smi -lgc) -- deliberately, so pins and test runs sample the same distribution; see calibration._CLOCKS_ARE_FREE_RUNNING. N_SAMPLES_PIN_TIME=15, tests use N_SAMPLES_TEST_TIME=9. Cells timed mode=device; ('dispatch', ...) pins are dimensionless ratios to a bare GemmSm90 launch. HARVESTED FROM ONE WHOLE-SUITE RUN (CPO_PERF_MEASURE=1 pytest tests/perf/ -q -s), not per file and not per cell: sustained load moves the free-running clock, so a pin taken on a quiet GPU is a pin from a different distribution than the gate's. NOTE this is a DIFFERENT HOST from the 2026-08-12 pins (Xeon Silver 4314), so host-bound and dispatch-ratio cells move. Measured 2026-08-13.",
+  "cells": [
+    {
+      "key": [
+        4096,
+        2048,
+        2048,
+        1,
+        128,
+        256
+      ],
+      "median_ms": 0.050944,
+      "rel_std": 0.015095
+    },
+    {
+      "key": [
+        4096,
+        2048,
+        2048,
+        1,
+        128,
+        128
+      ],
+      "median_ms": 0.066784,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        2048,
+        2048,
+        1,
+        256,
+        128
+      ],
+      "median_ms": 0.055744,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        1001,
+        2048,
+        2048,
+        1,
+        128,
+        256
+      ],
+      "median_ms": 0.026496,
+      "rel_std": 0.019071
+    },
+    {
+      "key": [
+        4096,
+        2048,
+        64,
+        1,
+        128,
+        256
+      ],
+      "median_ms": 0.012416,
+      "rel_std": 0.005656
+    },
+    {
+      "key": [
+        4096,
+        2048,
+        128,
+        1,
+        128,
+        128
+      ],
+      "median_ms": 0.012224,
+      "rel_std": 0.006559
+    },
+    {
+      "key": [
+        128,
+        256,
+        256,
+        7,
+        128,
+        128
+      ],
+      "median_ms": 0.008448,
+      "rel_std": 0.008239
+    },
+    {
+      "key": [
+        301,
+        200,
+        192,
+        2,
+        128,
+        128
+      ],
+      "median_ms": 0.007936,
+      "rel_std": 0.008096
+    },
+    {
+      "key": [
+        1,
+        8,
+        8,
+        1,
+        64,
+        64
+      ],
+      "median_ms": 0.006048,
+      "rel_std": 0.012836
+    },
+    {
+      "key": [
+        1000,
+        1000,
+        1000,
+        16,
+        128,
+        256
+      ],
+      "median_ms": 0.08912,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        1000,
+        1000,
+        1000,
+        48,
+        128,
+        256
+      ],
+      "median_ms": 0.258256,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        2048,
+        2048,
+        2048,
+        16,
+        128,
+        256
+      ],
+      "median_ms": 0.444832,
+      "rel_std": 0.009102
+    },
+    {
+      "key": [
+        2048,
+        2048,
+        2048,
+        32,
+        128,
+        256
+      ],
+      "median_ms": 0.872928,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        2048,
+        2048,
+        2048,
+        8,
+        256,
+        208
+      ],
+      "median_ms": 0.213216,
+      "rel_std": 0.03147
+    },
+    {
+      "key": [
+        2048,
+        2048,
+        2048,
+        16,
+        256,
+        192
+      ],
+      "median_ms": 0.434608,
+      "rel_std": 0.06716
+    },
+    {
+      "key": [
+        2048,
+        2048,
+        2048,
+        32,
+        256,
+        208
+      ],
+      "median_ms": 0.877856,
+      "rel_std": 0.030573
+    },
+    {
+      "key": [
+        4096,
+        4096,
+        4096,
+        8,
+        256,
+        128
+      ],
+      "median_ms": 1.695776,
+      "rel_std": 0.012072
+    },
+    {
+      "key": [
+        4096,
+        4096,
+        4096,
+        16,
+        256,
+        192
+      ],
+      "median_ms": 3.223392,
+      "rel_std": 0.024423
+    },
+    {
+      "key": [
+        8192,
+        8192,
+        8192,
+        8,
+        256,
+        192
+      ],
+      "median_ms": 12.588032,
+      "rel_std": 0.010604
+    },
+    {
+      "key": [
+        12288,
+        12288,
+        12288,
+        8,
+        256,
+        208
+      ],
+      "median_ms": 41.716705,
+      "rel_std": 0.024417
+    }
+  ]
+}

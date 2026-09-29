@@ -1,0 +1,146 @@
+{
+  "schema": 1,
+  "kernel": "trimul_autotune",
+  "measured_on": "RE-HARVESTED on the venue that matches every other pin file in this repo: a 2-node H100 cluster, Intel Xeon Platinum 8480C + 8x H100 80GB HBM3 SXM5, CUDA_VISIBLE_DEVICES=0, CLOCKS FREE-RUNNING. ONE SERIAL whole-perf-suite run (CPO_PERF_MEASURE=1 pytest -q -s tests/perf/, 9m52s), never a single-file run -- sustained load moves the free-running clock. The FIRST harvest of these cells was taken on an AMD EPYC 7413 box and is DISCARDED: a dispatch ratio is only venue-portable if the submit path and the bare-GemmSm90 reference scale together, and across that CPU gap they do not. The damage was measurable -- ('workflow',2048,384,'outgoing') harvested 39.98 ms on EPYC against 32.65 ms here, a 22% too-loose pin, and this gate is ONE-SIDED so a loose pin never fails, it just silently stops detecting. Never harvest on an H200 either, for the same one-sided reason.",
+  "cells": [
+    {
+      "key": [
+        "workflow",
+        2048,
+        128,
+        "outgoing"
+      ],
+      "median_ms": 6.656864,
+      "rel_std": 0.02726
+    },
+    {
+      "key": [
+        "workflow",
+        2048,
+        128,
+        "incoming"
+      ],
+      "median_ms": 6.484832,
+      "rel_std": 0.053978
+    },
+    {
+      "key": [
+        "workflow",
+        2048,
+        256,
+        "outgoing"
+      ],
+      "median_ms": 15.751744,
+      "rel_std": 0.018131
+    },
+    {
+      "key": [
+        "workflow",
+        2048,
+        256,
+        "incoming"
+      ],
+      "median_ms": 15.72208,
+      "rel_std": 0.028835
+    },
+    {
+      "key": [
+        "workflow",
+        2048,
+        384,
+        "outgoing"
+      ],
+      "median_ms": 32.654209,
+      "rel_std": 0.01523
+    },
+    {
+      "key": [
+        "workflow",
+        2048,
+        384,
+        "incoming"
+      ],
+      "median_ms": 32.979328,
+      "rel_std": 0.027006
+    },
+    {
+      "key": [
+        "workflow",
+        2048,
+        512,
+        "outgoing"
+      ],
+      "median_ms": 43.872002,
+      "rel_std": 0.032411
+    },
+    {
+      "key": [
+        "workflow",
+        2048,
+        512,
+        "incoming"
+      ],
+      "median_ms": 44.665825,
+      "rel_std": 0.014658
+    },
+    {
+      "key": [
+        "workflow",
+        4096,
+        128,
+        "outgoing"
+      ],
+      "median_ms": 38.109024,
+      "rel_std": 0.011263
+    },
+    {
+      "key": [
+        "workflow",
+        4096,
+        128,
+        "incoming"
+      ],
+      "median_ms": 38.847103,
+      "rel_std": 0.057725
+    },
+    {
+      "key": [
+        "workflow",
+        4096,
+        256,
+        "outgoing"
+      ],
+      "median_ms": 86.375198,
+      "rel_std": 0.013153
+    },
+    {
+      "key": [
+        "workflow",
+        4096,
+        256,
+        "incoming"
+      ],
+      "median_ms": 87.193954,
+      "rel_std": 0.010015
+    },
+    {
+      "key": [
+        "workflow",
+        4096,
+        384,
+        "outgoing"
+      ],
+      "median_ms": 170.403809,
+      "rel_std": 0.013041
+    },
+    {
+      "key": [
+        "dispatch",
+        "trimul_autotuned"
+      ],
+      "median_ms": 21.069119,
+      "rel_std": 0.005122,
+      "note": "21.07x a bare GemmSm90 launch at the smallest accepted shape (N_token=8, D=32). Large by design: this is a DISPATCHER -- one call runs the size->config heuristic, builds the config, reshapes/transposes operands into views, and submits FOUR kernels. Read against the per-kernel dispatch pins it composes. Also carries op 7's per-call autotuner key build, which `main` pays too; that cost vanishes at every production cell (6-170 ms) which is exactly why it needs a pin at a shape where it does not."
+    }
+  ]
+}

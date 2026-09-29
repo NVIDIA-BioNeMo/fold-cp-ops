@@ -1,0 +1,348 @@
+{
+  "schema": 1,
+  "kernel": "layernorm",
+  "measured_on": "4x H100 80GB HBM3 SXM5 (NVSwitch, NV18) + Intel Xeon Platinum 8480CL; run PINNED TO GPU 0 (CUDA_VISIBLE_DEVICES=0), the other three idle. CLOCKS FREE-RUNNING (no nvidia-smi -lgc) -- deliberately, so pins and test runs sample the same distribution; see calibration._CLOCKS_ARE_FREE_RUNNING. N_SAMPLES_PIN_TIME=15, tests use N_SAMPLES_TEST_TIME=9. Cells timed mode=device; ('dispatch', ...) pins are dimensionless ratios to a bare GemmSm90 launch. HARVESTED FROM ONE WHOLE-SUITE RUN (CPO_PERF_MEASURE=1 pytest tests/perf/ -q -s), not per file and not per cell: sustained load moves the free-running clock, so a pin taken on a quiet GPU is a pin from a different distribution than the gate's. NOTE this is a DIFFERENT HOST from the 2026-08-12 pins (Xeon Silver 4314), so host-bound and dispatch-ratio cells move. Measured 2026-08-13.",
+  "cells": [
+    {
+      "key": [
+        1048576,
+        128,
+        "bfloat16"
+      ],
+      "median_ms": 0.1832,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        1048576,
+        256,
+        "bfloat16"
+      ],
+      "median_ms": 0.360096,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        1048576,
+        384,
+        "bfloat16"
+      ],
+      "median_ms": 0.53968,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        262144,
+        384,
+        "bfloat16"
+      ],
+      "median_ms": 0.138752,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        65536,
+        64,
+        "bfloat16"
+      ],
+      "median_ms": 0.012128,
+      "rel_std": 0.007234
+    },
+    {
+      "key": [
+        65536,
+        128,
+        "bfloat16"
+      ],
+      "median_ms": 0.01792,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        65536,
+        256,
+        "bfloat16"
+      ],
+      "median_ms": 0.029312,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        65536,
+        384,
+        "bfloat16"
+      ],
+      "median_ms": 0.039552,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        65536,
+        760,
+        "bfloat16"
+      ],
+      "median_ms": 0.07504,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        65536,
+        1000,
+        "bfloat16"
+      ],
+      "median_ms": 0.09624,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        65536,
+        1002,
+        "bfloat16"
+      ],
+      "median_ms": 0.098512,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        65536,
+        1024,
+        "bfloat16"
+      ],
+      "median_ms": 0.09664,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        65536,
+        1128,
+        "bfloat16"
+      ],
+      "median_ms": 0.105728,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        16384,
+        3000,
+        "bfloat16"
+      ],
+      "median_ms": 0.081968,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        16384,
+        4096,
+        "bfloat16"
+      ],
+      "median_ms": 0.107744,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        2688,
+        "bfloat16"
+      ],
+      "median_ms": 0.02592,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        2816,
+        "bfloat16"
+      ],
+      "median_ms": 0.026144,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        3072,
+        "bfloat16"
+      ],
+      "median_ms": 0.028768,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        2688,
+        "float32"
+      ],
+      "median_ms": 0.037248,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        2816,
+        "float32"
+      ],
+      "median_ms": 0.042464,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        3072,
+        "float32"
+      ],
+      "median_ms": 0.047168,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        6136,
+        "float32"
+      ],
+      "median_ms": 0.087456,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        8200,
+        "float32"
+      ],
+      "median_ms": 0.097008,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        14336,
+        "float32"
+      ],
+      "median_ms": 0.229168,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        8192,
+        "bfloat16"
+      ],
+      "median_ms": 0.059328,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        12288,
+        "bfloat16"
+      ],
+      "median_ms": 0.085344,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        16384,
+        "bfloat16"
+      ],
+      "median_ms": 0.11504,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        16640,
+        "bfloat16"
+      ],
+      "median_ms": 0.135232,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        20000,
+        "bfloat16"
+      ],
+      "median_ms": 0.14368,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        32768,
+        "bfloat16"
+      ],
+      "median_ms": 0.28224,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        40000,
+        "bfloat16"
+      ],
+      "median_ms": 0.2976,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        65536,
+        256,
+        "float32"
+      ],
+      "median_ms": 0.05072,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        65536,
+        1024,
+        "float32"
+      ],
+      "median_ms": 0.18544,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        16384,
+        999,
+        "float32"
+      ],
+      "median_ms": 0.05088,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        16384,
+        4095,
+        "float32"
+      ],
+      "median_ms": 0.20448,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        16384,
+        8191,
+        "float32"
+      ],
+      "median_ms": 0.430304,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        16384,
+        "float32"
+      ],
+      "median_ms": 0.201504,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "dispatch",
+        "layernorm_fwd"
+      ],
+      "median_ms": 2.060121,
+      "rel_std": 0.005821
+    }
+  ]
+}

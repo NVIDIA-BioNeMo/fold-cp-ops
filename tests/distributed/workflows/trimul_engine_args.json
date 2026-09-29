@@ -1,0 +1,4389 @@
+{
+ "cells": [
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 16,
+    "direction": "incoming",
+    "masked": false,
+    "mesh": "16"
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      1,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": "_A2ASignalDrain",
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 16,
+     "L": 16,
+     "M": 16384,
+     "N_i_loc": 32,
+     "N_j_loc": 512,
+     "cp": 16,
+     "cp0": 16,
+     "cp1": 1
+    },
+    "has_ib_peers": true,
+    "has_mask": false,
+    "hybrid_ib": true,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": true
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 16,
+    "direction": "outgoing",
+    "masked": false,
+    "mesh": "16"
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      1,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": "_A2ASignalDrain",
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 16,
+     "L": 16,
+     "M": 16384,
+     "N_i_loc": 32,
+     "N_j_loc": 512,
+     "cp": 16,
+     "cp0": 16,
+     "cp1": 1
+    },
+    "has_ib_peers": true,
+    "has_mask": false,
+    "hybrid_ib": true,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": true
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 128,
+    "N": 512,
+    "cp": 2,
+    "direction": "incoming",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 128,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     64,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 64,
+     "L": 64,
+     "M": 131072,
+     "N_i_loc": 256,
+     "N_j_loc": 512,
+     "cp": 2,
+     "cp0": 2,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 128,
+    "N": 512,
+    "cp": 2,
+    "direction": "incoming",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 128,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     64,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 64,
+     "L": 64,
+     "M": 131072,
+     "N_i_loc": 256,
+     "N_j_loc": 512,
+     "cp": 2,
+     "cp0": 2,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 2,
+    "direction": "incoming",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     128,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 128,
+     "L": 128,
+     "M": 131072,
+     "N_i_loc": 256,
+     "N_j_loc": 512,
+     "cp": 2,
+     "cp0": 2,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 2,
+    "direction": "incoming",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     128,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 128,
+     "L": 128,
+     "M": 131072,
+     "N_i_loc": 256,
+     "N_j_loc": 512,
+     "cp": 2,
+     "cp0": 2,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 384,
+    "N": 512,
+    "cp": 2,
+    "direction": "incoming",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 384,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     96,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 192,
+     "L": 192,
+     "M": 131072,
+     "N_i_loc": 256,
+     "N_j_loc": 512,
+     "cp": 2,
+     "cp0": 2,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 384,
+    "N": 512,
+    "cp": 2,
+    "direction": "incoming",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 384,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     96,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 192,
+     "L": 192,
+     "M": 131072,
+     "N_i_loc": 256,
+     "N_j_loc": 512,
+     "cp": 2,
+     "cp0": 2,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 512,
+    "N": 512,
+    "cp": 2,
+    "direction": "incoming",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 512,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     256,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 256,
+     "L": 256,
+     "M": 131072,
+     "N_i_loc": 256,
+     "N_j_loc": 512,
+     "cp": 2,
+     "cp0": 2,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 512,
+    "N": 512,
+    "cp": 2,
+    "direction": "incoming",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 512,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     256,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 256,
+     "L": 256,
+     "M": 131072,
+     "N_i_loc": 256,
+     "N_j_loc": 512,
+     "cp": 2,
+     "cp0": 2,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 128,
+    "N": 512,
+    "cp": 2,
+    "direction": "outgoing",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 128,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     64,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 64,
+     "L": 64,
+     "M": 131072,
+     "N_i_loc": 256,
+     "N_j_loc": 512,
+     "cp": 2,
+     "cp0": 2,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 128,
+    "N": 512,
+    "cp": 2,
+    "direction": "outgoing",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 128,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     64,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 64,
+     "L": 64,
+     "M": 131072,
+     "N_i_loc": 256,
+     "N_j_loc": 512,
+     "cp": 2,
+     "cp0": 2,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 2,
+    "direction": "outgoing",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     128,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 128,
+     "L": 128,
+     "M": 131072,
+     "N_i_loc": 256,
+     "N_j_loc": 512,
+     "cp": 2,
+     "cp0": 2,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 2,
+    "direction": "outgoing",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     128,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 128,
+     "L": 128,
+     "M": 131072,
+     "N_i_loc": 256,
+     "N_j_loc": 512,
+     "cp": 2,
+     "cp0": 2,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 384,
+    "N": 512,
+    "cp": 2,
+    "direction": "outgoing",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 384,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     96,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 192,
+     "L": 192,
+     "M": 131072,
+     "N_i_loc": 256,
+     "N_j_loc": 512,
+     "cp": 2,
+     "cp0": 2,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 384,
+    "N": 512,
+    "cp": 2,
+    "direction": "outgoing",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 384,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     96,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 192,
+     "L": 192,
+     "M": 131072,
+     "N_i_loc": 256,
+     "N_j_loc": 512,
+     "cp": 2,
+     "cp0": 2,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 512,
+    "N": 512,
+    "cp": 2,
+    "direction": "outgoing",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 512,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     256,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 256,
+     "L": 256,
+     "M": 131072,
+     "N_i_loc": 256,
+     "N_j_loc": 512,
+     "cp": 2,
+     "cp0": 2,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 512,
+    "N": 512,
+    "cp": 2,
+    "direction": "outgoing",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 512,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     256,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 256,
+     "L": 256,
+     "M": 131072,
+     "N_i_loc": 256,
+     "N_j_loc": 512,
+     "cp": 2,
+     "cp0": 2,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 16,
+    "direction": "incoming",
+    "masked": false,
+    "mesh": "2x8"
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>",
+      "<Shard>"
+     ],
+     "route2_ni": true
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      1,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": "_A2ASignalDrain",
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 16,
+     "L": 16,
+     "M": 16384,
+     "N_i_loc": 256,
+     "N_j_loc": 64,
+     "cp": 16,
+     "cp0": 2,
+     "cp1": 8
+    },
+    "has_ib_peers": true,
+    "has_mask": false,
+    "hybrid_ib": true,
+    "route2_ni": true,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": "DualGatedGemmDistStore"
+    },
+    "use_signal_drain": true
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 16,
+    "direction": "outgoing",
+    "masked": false,
+    "mesh": "2x8"
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>",
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      1,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": "_A2ASignalDrain",
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 16,
+     "L": 16,
+     "M": 16384,
+     "N_i_loc": 256,
+     "N_j_loc": 64,
+     "cp": 16,
+     "cp0": 2,
+     "cp1": 8
+    },
+    "has_ib_peers": true,
+    "has_mask": false,
+    "hybrid_ib": true,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": true
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 128,
+    "N": 512,
+    "cp": 4,
+    "direction": "incoming",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 128,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 32,
+     "L": 32,
+     "M": 65536,
+     "N_i_loc": 128,
+     "N_j_loc": 512,
+     "cp": 4,
+     "cp0": 4,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 128,
+    "N": 512,
+    "cp": 4,
+    "direction": "incoming",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 128,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 32,
+     "L": 32,
+     "M": 65536,
+     "N_i_loc": 128,
+     "N_j_loc": 512,
+     "cp": 4,
+     "cp0": 4,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 4,
+    "direction": "incoming",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     64,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 64,
+     "L": 64,
+     "M": 65536,
+     "N_i_loc": 128,
+     "N_j_loc": 512,
+     "cp": 4,
+     "cp0": 4,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 4,
+    "direction": "incoming",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     64,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 64,
+     "L": 64,
+     "M": 65536,
+     "N_i_loc": 128,
+     "N_j_loc": 512,
+     "cp": 4,
+     "cp0": 4,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 384,
+    "N": 512,
+    "cp": 4,
+    "direction": "incoming",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 384,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     96,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 96,
+     "L": 96,
+     "M": 65536,
+     "N_i_loc": 128,
+     "N_j_loc": 512,
+     "cp": 4,
+     "cp0": 4,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 384,
+    "N": 512,
+    "cp": 4,
+    "direction": "incoming",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 384,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     96,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 96,
+     "L": 96,
+     "M": 65536,
+     "N_i_loc": 128,
+     "N_j_loc": 512,
+     "cp": 4,
+     "cp0": 4,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 512,
+    "N": 512,
+    "cp": 4,
+    "direction": "incoming",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 512,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     128,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 128,
+     "L": 128,
+     "M": 65536,
+     "N_i_loc": 128,
+     "N_j_loc": 512,
+     "cp": 4,
+     "cp0": 4,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 512,
+    "N": 512,
+    "cp": 4,
+    "direction": "incoming",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 512,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     128,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 128,
+     "L": 128,
+     "M": 65536,
+     "N_i_loc": 128,
+     "N_j_loc": 512,
+     "cp": 4,
+     "cp0": 4,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 128,
+    "N": 512,
+    "cp": 4,
+    "direction": "outgoing",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 128,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 32,
+     "L": 32,
+     "M": 65536,
+     "N_i_loc": 128,
+     "N_j_loc": 512,
+     "cp": 4,
+     "cp0": 4,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 128,
+    "N": 512,
+    "cp": 4,
+    "direction": "outgoing",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 128,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 32,
+     "L": 32,
+     "M": 65536,
+     "N_i_loc": 128,
+     "N_j_loc": 512,
+     "cp": 4,
+     "cp0": 4,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 4,
+    "direction": "outgoing",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     64,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 64,
+     "L": 64,
+     "M": 65536,
+     "N_i_loc": 128,
+     "N_j_loc": 512,
+     "cp": 4,
+     "cp0": 4,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 4,
+    "direction": "outgoing",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     64,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 64,
+     "L": 64,
+     "M": 65536,
+     "N_i_loc": 128,
+     "N_j_loc": 512,
+     "cp": 4,
+     "cp0": 4,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 384,
+    "N": 512,
+    "cp": 4,
+    "direction": "outgoing",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 384,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     96,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 96,
+     "L": 96,
+     "M": 65536,
+     "N_i_loc": 128,
+     "N_j_loc": 512,
+     "cp": 4,
+     "cp0": 4,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 384,
+    "N": 512,
+    "cp": 4,
+    "direction": "outgoing",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 384,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     96,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 96,
+     "L": 96,
+     "M": 65536,
+     "N_i_loc": 128,
+     "N_j_loc": 512,
+     "cp": 4,
+     "cp0": 4,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 512,
+    "N": 512,
+    "cp": 4,
+    "direction": "outgoing",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 512,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     128,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 128,
+     "L": 128,
+     "M": 65536,
+     "N_i_loc": 128,
+     "N_j_loc": 512,
+     "cp": 4,
+     "cp0": 4,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 512,
+    "N": 512,
+    "cp": 4,
+    "direction": "outgoing",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 512,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     128,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 128,
+     "L": 128,
+     "M": 65536,
+     "N_i_loc": 128,
+     "N_j_loc": 512,
+     "cp": 4,
+     "cp0": 4,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 16,
+    "direction": "incoming",
+    "masked": false,
+    "mesh": "4x4"
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>",
+      "<Shard>"
+     ],
+     "route2_ni": true
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      1,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": "_A2ASignalDrain",
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 16,
+     "L": 16,
+     "M": 16384,
+     "N_i_loc": 128,
+     "N_j_loc": 128,
+     "cp": 16,
+     "cp0": 4,
+     "cp1": 4
+    },
+    "has_ib_peers": true,
+    "has_mask": false,
+    "hybrid_ib": true,
+    "route2_ni": true,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": "DualGatedGemmDistStore"
+    },
+    "use_signal_drain": true
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 16,
+    "direction": "outgoing",
+    "masked": false,
+    "mesh": "4x4"
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>",
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      1,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": "_A2ASignalDrain",
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 16,
+     "L": 16,
+     "M": 16384,
+     "N_i_loc": 128,
+     "N_j_loc": 128,
+     "cp": 16,
+     "cp0": 4,
+     "cp1": 4
+    },
+    "has_ib_peers": true,
+    "has_mask": false,
+    "hybrid_ib": true,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": true
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 128,
+    "N": 512,
+    "cp": 8,
+    "direction": "incoming",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 128,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 16,
+     "L": 16,
+     "M": 32768,
+     "N_i_loc": 64,
+     "N_j_loc": 512,
+     "cp": 8,
+     "cp0": 8,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 128,
+    "N": 512,
+    "cp": 8,
+    "direction": "incoming",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 128,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 16,
+     "L": 16,
+     "M": 32768,
+     "N_i_loc": 64,
+     "N_j_loc": 512,
+     "cp": 8,
+     "cp0": 8,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 8,
+    "direction": "incoming",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 32,
+     "L": 32,
+     "M": 32768,
+     "N_i_loc": 64,
+     "N_j_loc": 512,
+     "cp": 8,
+     "cp0": 8,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 8,
+    "direction": "incoming",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 32,
+     "L": 32,
+     "M": 32768,
+     "N_i_loc": 64,
+     "N_j_loc": 512,
+     "cp": 8,
+     "cp0": 8,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 384,
+    "N": 512,
+    "cp": 8,
+    "direction": "incoming",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 384,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 48,
+     "L": 48,
+     "M": 32768,
+     "N_i_loc": 64,
+     "N_j_loc": 512,
+     "cp": 8,
+     "cp0": 8,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 384,
+    "N": 512,
+    "cp": 8,
+    "direction": "incoming",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 384,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 48,
+     "L": 48,
+     "M": 32768,
+     "N_i_loc": 64,
+     "N_j_loc": 512,
+     "cp": 8,
+     "cp0": 8,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 512,
+    "N": 512,
+    "cp": 8,
+    "direction": "incoming",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 512,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     64,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 64,
+     "L": 64,
+     "M": 32768,
+     "N_i_loc": 64,
+     "N_j_loc": 512,
+     "cp": 8,
+     "cp0": 8,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 512,
+    "N": 512,
+    "cp": 8,
+    "direction": "incoming",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 512,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "composite_k": true,
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": true,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     64,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 64,
+     "L": 64,
+     "M": 32768,
+     "N_i_loc": 64,
+     "N_j_loc": 512,
+     "cp": 8,
+     "cp0": 8,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": "DualGatedGemmDistStore",
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 128,
+    "N": 512,
+    "cp": 8,
+    "direction": "outgoing",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 128,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 16,
+     "L": 16,
+     "M": 32768,
+     "N_i_loc": 64,
+     "N_j_loc": 512,
+     "cp": 8,
+     "cp0": 8,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 128,
+    "N": 512,
+    "cp": 8,
+    "direction": "outgoing",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 128,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 16,
+     "L": 16,
+     "M": 32768,
+     "N_i_loc": 64,
+     "N_j_loc": 512,
+     "cp": 8,
+     "cp0": 8,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 8,
+    "direction": "outgoing",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 32,
+     "L": 32,
+     "M": 32768,
+     "N_i_loc": 64,
+     "N_j_loc": 512,
+     "cp": 8,
+     "cp0": 8,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 256,
+    "N": 512,
+    "cp": 8,
+    "direction": "outgoing",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 256,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 32,
+     "L": 32,
+     "M": 32768,
+     "N_i_loc": 64,
+     "N_j_loc": 512,
+     "cp": 8,
+     "cp0": 8,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 384,
+    "N": 512,
+    "cp": 8,
+    "direction": "outgoing",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 384,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 48,
+     "L": 48,
+     "M": 32768,
+     "N_i_loc": 64,
+     "N_j_loc": 512,
+     "cp": 8,
+     "cp0": 8,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 384,
+    "N": 512,
+    "cp": 8,
+    "direction": "outgoing",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 384,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     32,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 48,
+     "L": 48,
+     "M": 32768,
+     "N_i_loc": 64,
+     "N_j_loc": 512,
+     "cp": 8,
+     "cp0": 8,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 512,
+    "N": 512,
+    "cp": 8,
+    "direction": "outgoing",
+    "masked": false
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 512,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": false,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     64,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 64,
+     "L": 64,
+     "M": 32768,
+     "N_i_loc": 64,
+     "N_j_loc": 512,
+     "cp": 8,
+     "cp0": 8,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": false,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  },
+  {
+   "cell": {
+    "B": 1,
+    "D": 512,
+    "N": 512,
+    "cp": 8,
+    "direction": "outgoing",
+    "masked": true
+   },
+   "init_args": {
+    "args": {
+     "B": 1,
+     "D": 512,
+     "N": 512,
+     "dt": "torch.bfloat16",
+     "w_keys": [
+      "g_in_w",
+      "g_out_w",
+      "norm_in_b",
+      "norm_in_w",
+      "norm_out_b",
+      "norm_out_w",
+      "p_in_w",
+      "p_out_w"
+     ]
+    },
+    "kwargs": {
+     "device_mesh": "<DeviceMesh>",
+     "dynamic": true,
+     "has_mask": true,
+     "placements": [
+      "<Shard>"
+     ]
+    }
+   },
+   "resolved": {
+    "back_cfg": [
+     128,
+     128,
+     false,
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "back_store": "pe_aligned",
+    "composite_k": false,
+    "drain_obj": null,
+    "dynamic": true,
+    "front_cfg": [
+     128,
+     64,
+     false
+    ],
+    "front_pad_eager": false,
+    "front_pad_inner": false,
+    "geometry": {
+     "D_loc": 64,
+     "L": 64,
+     "M": 32768,
+     "N_i_loc": 64,
+     "N_j_loc": 512,
+     "cp": 8,
+     "cp0": 8,
+     "cp1": 1
+    },
+    "has_ib_peers": false,
+    "has_mask": true,
+    "hybrid_ib": false,
+    "route2_ni": false,
+    "store_classes": {
+     "back": "GemmA2AStore",
+     "front": "DualGatedGemmDistStore",
+     "front_comp": null,
+     "front_ni": null
+    },
+    "use_signal_drain": false
+   }
+  }
+ ],
+ "meta": {
+  "captured_through": "trimul_a2a(x_dtensor, w, dt, direction=, mask=, distributed_manager=, _cache=) \u2014 the REAL entry. An earlier attempt constructed TriMulAutotuned directly and recorded the caller's own kwargs, which pins nothing about the argument construction the refactor changes.",
+  "diff_rules": [
+   "A key that APPEARS or VANISHES is a difference. `composite_k` is absent (not false) on outgoing cells because trimul_a2a only sets it for incoming, so a field-count report reads an absent key as constant.",
+   "geometry.L is included deliberately: its staleness once made a rebound engine run HALF the GEMM batch axis, and it reaches the kernel without appearing in an obvious state dump."
+  ],
+  "distinguishing_power": "19 of 25 resolved fields vary across the grid",
+  "grid": {
+   "venueA_2node_H100": "mesh {16, 4x4, 2x8} x direction, D=256, 6 cells",
+   "fixed": {
+    "B": 1,
+    "CPO_CACHE_ENABLED": 0,
+    "N": 512,
+    "dtype": "torch.bfloat16"
+   },
+   "local_8xH20_sm90": "cp {2,4,8} x direction x masked x D {128,256,384,512}, 48 cells"
+  },
+  "invariants_asserted_at_capture": [
+   "has_mask tracks the shard",
+   "composite_k true exactly on 1-D incoming",
+   "route2_ni true exactly on 2-D incoming",
+   "geometry.cp1 matches the mesh label",
+   "geometry.L == D // cp"
+  ],
+  "resolved_is_read_back": "off the constructed instance, never re-derived. Re-calling the resolvers can agree perfectly while the engine used a third value \u2014 the precedence chain (override > autotune > _baked > heuristic, plus the _resolve_front_tile_n clamp) is where a disagreement hides.",
+  "what": "R0 \u2014 the ENGINE-ARGUMENT ORACLE for the TriangularMultiplication refactor.",
+  "why": "The refactor is components-wiring: it may change WHO computes a config value, never WHAT it resolves to. So the deliverable is argument identity, and this file is what that is checked against. Every later step re-captures and diffs field-by-field."
+ }
+}

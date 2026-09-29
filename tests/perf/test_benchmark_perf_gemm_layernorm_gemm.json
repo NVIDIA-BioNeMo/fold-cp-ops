@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "kernel": "gemm_layernorm_gemm",
+  "measured_on": "DGX H100, a 2-node H100 cluster, 2026-08-22. CLOCKS FREE-RUNNING.",
+  "cells": [
+    {
+      "key": [
+        "dispatch",
+        "gemm_layernorm_gemm"
+      ],
+      "median_ms": 3.428488,
+      "rel_std": 0.005,
+      "note": "BOOTSTRAP PLACEHOLDER, not a measurement. A dispatch cell must EXIST for this gate to LOAD -- _require_dispatch_gate reads module.PINS.keys() and raises pytest.UsageError from pytest_collectstart, which aborts the WHOLE session. With cells empty, `pytest tests/perf/` stopped at this module (alphabetically 4th) and collected 3 of 8 gates, 62 tests, while looking like a session error rather than a coverage hole. rel_std 1.0 makes the cell unpinnable in practice; the first CPO_PERF_MEASURE=1 harvest replaces both numbers."
+    },
+    {
+      "key": [
+        128,
+        128,
+        "cont"
+      ],
+      "median_ms": 0.044144,
+      "rel_std": 0.021475
+    },
+    {
+      "key": [
+        128,
+        256,
+        "cont"
+      ],
+      "median_ms": 0.062048,
+      "rel_std": 0.014714
+    },
+    {
+      "key": [
+        128,
+        512,
+        "cont"
+      ],
+      "median_ms": 0.129344,
+      "rel_std": 0.006701
+    },
+    {
+      "key": [
+        256,
+        128,
+        "cont"
+      ],
+      "median_ms": 0.124848,
+      "rel_std": 0.007445
+    },
+    {
+      "key": [
+        256,
+        256,
+        "cont"
+      ],
+      "median_ms": 0.24104,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        256,
+        256,
+        "perfeat"
+      ],
+      "median_ms": 0.249488,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        512,
+        512,
+        "cont"
+      ],
+      "median_ms": 2.468992,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        512,
+        512,
+        "perfeat"
+      ],
+      "median_ms": 2.45904,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        1024,
+        256,
+        "perfeat"
+      ],
+      "median_ms": 5.817792,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        200,
+        208,
+        "cont"
+      ],
+      "median_ms": 0.167264,
+      "rel_std": 0.005933
+    },
+    {
+      "key": [
+        128,
+        264,
+        "cont"
+      ],
+      "median_ms": 0.136384,
+      "rel_std": 0.005
+    }
+  ]
+}

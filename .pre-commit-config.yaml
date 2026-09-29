@@ -1,0 +1,56 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-yaml
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.11.13
+    hooks:
+      - id: ruff-check
+        args: [--fix, --exit-non-zero-on-fix]
+        exclude: ^(pre-commit/|licenses/|.*/results.*/|.*\.ipynb$)
+      - id: ruff-format
+        exclude: ^(pre-commit/|licenses/|.*/results.*/|.*\.ipynb$)
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        name: detect-secrets (everything but notebooks)
+        args: ['--baseline', './pre-commit/.secrets.baseline', '--exclude-files', '(.*\.ipynb|.*\.baseline|.*\.a3m)$', ]
+        exclude: package.lock.json
+  - repo: local
+    hooks:
+      - id: license-header-check
+        name: Run license-check script
+        entry: python pre-commit/license_check.py --license-header ./pre-commit/license_header --modify
+        language: python
+        additional_dependencies: ["click==8.1.7"]
+        pass_filenames: false
+        always_run: true
+      - id: no-dead-module-import
+        name: no import of a module that does not exist in this tree (function-local imports rot silently)
+        entry: python scripts/guard_no_dead_module_import.py
+        language: system
+        files: \.py$
+        pass_filenames: true
+      - id: no-adhoc-timing
+        name: no hand-rolled perf_counter timing of a kernel/collective launch (use bench_utils)
+        entry: python scripts/guard_no_adhoc_timing.py
+        language: system
+        files: \.py$
+        exclude: ^trash_to_be_removed/
+        pass_filenames: true
+      - id: no-pickle
+        name: no direct/aliased pickle import or bare torch.load (unsafe deserialization)
+        entry: python scripts/guard_no_pickle.py
+        language: system
+        files: ^(fold_cp_ops|tests)/.*\.py$
+        pass_filenames: true
+      - id: no-test-import-in-perf-bench
+        name: perf bench must not import a correctness-test input-builder (K=256 defect-vector guard)
+        entry: python scripts/guard_no_test_import_in_perf_bench.py
+        language: system
+        files: ^benchmark/.*\.py$
+        pass_filenames: true

@@ -1,0 +1,357 @@
+{
+  "schema": 1,
+  "kernel": "layernorm_dual_gated_gemm",
+  "measured_on": "4x H100 80GB HBM3 SXM5 (NVSwitch, NV18) + Intel Xeon Platinum 8480CL; run PINNED TO GPU 0 (CUDA_VISIBLE_DEVICES=0), the other three idle. CLOCKS FREE-RUNNING (no nvidia-smi -lgc) -- deliberately, so pins and test runs sample the same distribution; see calibration._CLOCKS_ARE_FREE_RUNNING. N_SAMPLES_PIN_TIME=15, tests use N_SAMPLES_TEST_TIME=9. Cells timed mode=device; ('dispatch', ...) pins are dimensionless ratios to a bare GemmSm90 launch. HARVESTED FROM ONE WHOLE-SUITE RUN (CPO_PERF_MEASURE=1 pytest tests/perf/ -q -s), not per file and not per cell: sustained load moves the free-running clock, so a pin taken on a quiet GPU is a pin from a different distribution than the gate's. NOTE this is a DIFFERENT HOST from the 2026-08-12 pins (Xeon Silver 4314), so host-bound and dispatch-ratio cells move. Measured 2026-08-13.",
+  "cells": [
+    {
+      "key": [
+        "front",
+        262144,
+        256,
+        128
+      ],
+      "median_ms": 0.149376,
+      "rel_std": 0.015378
+    },
+    {
+      "key": [
+        "front",
+        262144,
+        512,
+        256
+      ],
+      "median_ms": 0.468256,
+      "rel_std": 0.084081
+    },
+    {
+      "key": [
+        "front",
+        262144,
+        384,
+        384
+      ],
+      "median_ms": 0.5108,
+      "rel_std": 0.089083
+    },
+    {
+      "key": [
+        "front",
+        4096,
+        256,
+        128
+      ],
+      "median_ms": 0.010688,
+      "rel_std": 0.006777
+    },
+    {
+      "key": [
+        "front",
+        301,
+        200,
+        256
+      ],
+      "median_ms": 0.013248,
+      "rel_std": 0.006685
+    },
+    {
+      "key": [
+        "layout",
+        1
+      ],
+      "median_ms": 0.01824,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "layout",
+        16
+      ],
+      "median_ms": 0.014784,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "blk_k",
+        64
+      ],
+      "median_ms": 0.018208,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "blk_k",
+        32
+      ],
+      "median_ms": 0.019296,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "blk_k",
+        16
+      ],
+      "median_ms": 0.024768,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "terms",
+        false,
+        false
+      ],
+      "median_ms": 0.014784,
+      "rel_std": 0.005125
+    },
+    {
+      "key": [
+        "terms",
+        false,
+        true
+      ],
+      "median_ms": 0.014752,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "terms",
+        true,
+        false
+      ],
+      "median_ms": 0.015136,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "terms",
+        true,
+        true
+      ],
+      "median_ms": 0.015104,
+      "rel_std": 0.013326
+    },
+    {
+      "key": [
+        "gate3",
+        false
+      ],
+      "median_ms": 0.016736,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "gate3",
+        true
+      ],
+      "median_ms": 0.026432,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "dispatch",
+        "layernorm_dual_gated_gemm"
+      ],
+      "median_ms": 3.634419,
+      "rel_std": 0.008248
+    },
+    {
+      "key": [
+        "front",
+        262144,
+        128,
+        128
+      ],
+      "median_ms": 0.078928,
+      "rel_std": 0.005574
+    },
+    {
+      "key": [
+        "front",
+        262144,
+        256,
+        256
+      ],
+      "median_ms": 0.239072,
+      "rel_std": 0.026977
+    },
+    {
+      "key": [
+        "front",
+        262144,
+        512,
+        512
+      ],
+      "median_ms": 0.911712,
+      "rel_std": 0.042876
+    },
+    {
+      "key": [
+        "front",
+        4194304,
+        128,
+        128
+      ],
+      "median_ms": 1.177152,
+      "rel_std": 0.006998
+    },
+    {
+      "key": [
+        "front",
+        4194304,
+        256,
+        256
+      ],
+      "median_ms": 3.815904,
+      "rel_std": 0.008253
+    },
+    {
+      "key": [
+        "front",
+        4194304,
+        384,
+        384
+      ],
+      "median_ms": 8.422336,
+      "rel_std": 0.007109
+    },
+    {
+      "key": [
+        "front",
+        4194304,
+        512,
+        512
+      ],
+      "median_ms": 15.449824,
+      "rel_std": 0.007931
+    },
+    {
+      "key": [
+        "front",
+        1048576,
+        256,
+        256
+      ],
+      "median_ms": 0.961328,
+      "rel_std": 0.030092
+    },
+    {
+      "key": [
+        "front",
+        9437184,
+        256,
+        256
+      ],
+      "median_ms": 8.862624,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "pingpong",
+        false
+      ],
+      "median_ms": 0.097632,
+      "rel_std": 0.007691
+    },
+    {
+      "key": [
+        "pingpong",
+        true
+      ],
+      "median_ms": 0.08784,
+      "rel_std": 0.007773
+    },
+    {
+      "key": [
+        "variant",
+        "alg_fold",
+        262144,
+        128,
+        128
+      ],
+      "median_ms": 0.082784,
+      "rel_std": 0.009166
+    },
+    {
+      "key": [
+        "variant",
+        "alg_fold",
+        262144,
+        512,
+        512
+      ],
+      "median_ms": 0.633664,
+      "rel_std": 0.040028
+    },
+    {
+      "key": [
+        "variant",
+        "prolog_ln",
+        262144,
+        128,
+        128
+      ],
+      "median_ms": 0.085248,
+      "rel_std": 0.011682
+    },
+    {
+      "key": [
+        "variant",
+        "prolog_ln",
+        262144,
+        512,
+        512
+      ],
+      "median_ms": 0.862368,
+      "rel_std": 0.058319
+    },
+    {
+      "key": [
+        "front",
+        1048576,
+        128,
+        128
+      ],
+      "median_ms": 0.293664,
+      "rel_std": 0.027096
+    },
+    {
+      "key": [
+        "front",
+        1048576,
+        384,
+        384
+      ],
+      "median_ms": 2.079808,
+      "rel_std": 0.006445
+    },
+    {
+      "key": [
+        "front",
+        1048576,
+        512,
+        512
+      ],
+      "median_ms": 3.743072,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "xgate",
+        262144,
+        128,
+        128
+      ],
+      "median_ms": 0.099808,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "xgate",
+        262144,
+        512,
+        512
+      ],
+      "median_ms": 0.629408,
+      "rel_std": 0.051051
+    }
+  ]
+}

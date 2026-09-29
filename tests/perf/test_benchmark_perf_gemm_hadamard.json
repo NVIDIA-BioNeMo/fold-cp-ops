@@ -1,0 +1,128 @@
+{
+  "schema": 1,
+  "kernel": "gemm_hadamard",
+  "measured_on": "DGX H100, a 2-node H100 cluster, 2026-08-22. CLOCKS FREE-RUNNING.",
+  "cells": [
+    {
+      "key": [
+        "dispatch",
+        "gemm_hadamard"
+      ],
+      "median_ms": 1.51913,
+      "rel_std": 0.005,
+      "note": "1.447x a bare GemmSm90 launch. Read against test_benchmark_perf_gemm.json's ('dispatch','gemm') = 1.315 ONLY with its caveat: that cell passes C=None, so it submits THREE tensors and this one submits FOUR. The like-for-like comparison was measured at the same 8x8x8 shape in one process -- gemm with C=None 13.76 us, gemm WITH C 15.88 us, gemm_hadamard 15.26 us -- i.e. the whole gap is the fourth tensor's check_tensor shape compare, its stride/major pass and its TMA descriptor, and this entry is ~4% CHEAPER than gemm carrying the same four, because it has no beta / sr_seed / rounding_mode / run_j_tiles / add_to_output plumbing."
+    },
+    {
+      "key": [
+        "shape",
+        4096,
+        512,
+        512,
+        1
+      ],
+      "median_ms": 0.014144,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "shape",
+        1001,
+        512,
+        512,
+        1
+      ],
+      "median_ms": 0.011712,
+      "rel_std": 0.005898
+    },
+    {
+      "key": [
+        "shape",
+        4096,
+        512,
+        8,
+        1
+      ],
+      "median_ms": 0.01328,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "shape",
+        301,
+        200,
+        136,
+        3
+      ],
+      "median_ms": 0.009792,
+      "rel_std": 0.005952
+    },
+    {
+      "key": [
+        "shape",
+        262144,
+        128,
+        128,
+        1
+      ],
+      "median_ms": 0.088416,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "shape",
+        1048576,
+        256,
+        256,
+        1
+      ],
+      "median_ms": 0.666336,
+      "rel_std": 0.019253
+    },
+    {
+      "key": [
+        "shape",
+        1048576,
+        384,
+        384,
+        1
+      ],
+      "median_ms": 1.131328,
+      "rel_std": 0.01823
+    },
+    {
+      "key": [
+        "shape",
+        1048576,
+        512,
+        512,
+        1
+      ],
+      "median_ms": 1.708032,
+      "rel_std": 0.021392
+    },
+    {
+      "key": [
+        "epi",
+        "none"
+      ],
+      "median_ms": 0.047712,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "epi",
+        "row"
+      ],
+      "median_ms": 0.04864,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "epi",
+        "both"
+      ],
+      "median_ms": 0.048768,
+      "rel_std": 0.005
+    }
+  ]
+}

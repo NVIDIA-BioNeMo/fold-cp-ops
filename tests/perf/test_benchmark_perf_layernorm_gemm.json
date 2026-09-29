@@ -1,0 +1,171 @@
+{
+  "schema": 1,
+  "kernel": "layernorm_gemm",
+  "measured_on": "DGX H100, a 2-node H100 cluster, 2026-08-22. CLOCKS FREE-RUNNING.",
+  "cells": [
+    {
+      "key": [
+        "dispatch",
+        "layernorm_gemm"
+      ],
+      "median_ms": 5.18741,
+      "rel_std": 0.005,
+      "note": "5.61x a bare GemmSm90 launch, against gemm 1.31x / layernorm_fwd 2.02x / dual_gated_gemm 2.66x. High because this front door RE-FOLDS the weight on every call -- build_folded_operands is a second kernel with its own launch -- on top of eight argument checks and the size heuristic. It is INHERITED, not introduced: paired against the kernel this ports from, the whole entry measures 0.9921 at M=4096/D=128, so both front doors carry the same fold. A caller running a token loop over a fixed weight should hoist build_folded_operands out and call the fixed path directly."
+    },
+    {
+      "key": [
+        1048576,
+        128,
+        "bfloat16"
+      ],
+      "median_ms": 0.200768,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        262144,
+        128,
+        "bfloat16"
+      ],
+      "median_ms": 0.061024,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        1048576,
+        256,
+        "bfloat16"
+      ],
+      "median_ms": 0.44928,
+      "rel_std": 0.07466
+    },
+    {
+      "key": [
+        262144,
+        256,
+        "bfloat16"
+      ],
+      "median_ms": 0.1228,
+      "rel_std": 0.017956
+    },
+    {
+      "key": [
+        262144,
+        384,
+        "bfloat16"
+      ],
+      "median_ms": 0.235776,
+      "rel_std": 0.051207
+    },
+    {
+      "key": [
+        262144,
+        512,
+        "bfloat16"
+      ],
+      "median_ms": 0.385152,
+      "rel_std": 0.056392
+    },
+    {
+      "key": [
+        262144,
+        136,
+        "bfloat16"
+      ],
+      "median_ms": 0.146688,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        262144,
+        200,
+        "bfloat16"
+      ],
+      "median_ms": 0.180544,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        262144,
+        264,
+        "bfloat16"
+      ],
+      "median_ms": 0.29504,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        262144,
+        192,
+        "bfloat16"
+      ],
+      "median_ms": 0.098464,
+      "rel_std": 0.014303
+    },
+    {
+      "key": [
+        262144,
+        320,
+        "bfloat16"
+      ],
+      "median_ms": 0.199968,
+      "rel_std": 0.043209
+    },
+    {
+      "key": [
+        262144,
+        256,
+        "float16"
+      ],
+      "median_ms": 0.124896,
+      "rel_std": 0.014667
+    },
+    {
+      "key": [
+        262144,
+        200,
+        "float16"
+      ],
+      "median_ms": 0.180256,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        4096,
+        128,
+        "bfloat16"
+      ],
+      "median_ms": 0.014976,
+      "rel_std": 0.006295
+    },
+    {
+      "key": [
+        512,
+        128,
+        "bfloat16"
+      ],
+      "median_ms": 0.014432,
+      "rel_std": 0.009129
+    },
+    {
+      "key": [
+        262144,
+        256,
+        "bfloat16",
+        "gate3"
+      ],
+      "median_ms": 0.193536,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        262144,
+        200,
+        "bfloat16",
+        "gate3"
+      ],
+      "median_ms": 0.208832,
+      "rel_std": 0.005
+    }
+  ]
+}

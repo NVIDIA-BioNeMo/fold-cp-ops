@@ -1,0 +1,3570 @@
+{
+  "schema": 1,
+  "kernel": "trimul_a2a_workflow",
+  "measured_on": "DGX H100, a 2-node H100 cluster, 2026-08-22. CLOCKS FREE-RUNNING. AUTOTUNE ON (CPO_DIST_AUTOTUNE=1) with CPO_DIST_AUTOTUNE_FREEZE_DIR=w8plan/freeze_dir, FREEZE_SCHEMA_VERSION=2.\nDGX H100, a 2-node H100 cluster, 2026-08-22. CLOCKS FREE-RUNNING. AUTOTUNE ON with CPO_DIST_AUTOTUNE_FREEZE_DIR=w8plan/freeze_dir, FREEZE_SCHEMA_VERSION=2. Cells run ALONE (16-rank) or one-per-NODE (8-rank); the 4-rank meshes of that pass shared a node and are deliberately EXCLUDED, being re-harvested serially.\nDGX H100, a 2-node H100 cluster, 2026-08-22. CLOCKS FREE-RUNNING. AUTOTUNE ON with a WARM freeze (CPO_DIST_AUTOTUNE_FREEZE_DIR=w8plan/freeze_dir, FREEZE_SCHEMA_VERSION=2). SERIAL pass: ONE cell at a time on the whole allocation, so no cell shares a node with another.\nDGX H100, a 2-node H100 cluster, 2026-08-22. CLOCKS FREE-RUNNING. AUTOTUNE ON with a WARM freeze, FREEZE_SCHEMA_VERSION=2. SERIAL pass: ONE cell at a time on the whole allocation.\nDGX H100, a 2-node H100 cluster, 2026-08-22. CLOCKS FREE-RUNNING. AUTOTUNE ON with a WARM freeze (CPO_DIST_AUTOTUNE_FREEZE_DIR=w8plan/freeze_dir, FREEZE_SCHEMA_VERSION=2). N=4096 pass: <=8-rank cells packed ONE PER NODE, 16-rank cells ALONE, so no cell shares a node with another.\nDGX H100, a 2-node H100 cluster, 2026-08-22. CLOCKS FREE-RUNNING. AUTOTUNE ON with a WARM freeze (CPO_DIST_AUTOTUNE_FREEZE_DIR=w8plan/freeze_dir, FREEZE_SCHEMA_VERSION=2). Full next-N sweep: N=4096/8192/12288 plus off-grid 3008/5952/10048; <=8-rank cells packed ONE PER NODE, 16-rank ALONE. planned=360 pinned=23. The shortfall is NOT structural OOM: the allocation EXPIRED mid-sweep and the driver kept walking, so 313 cells recorded an instant rc=1 with 'Slurm a recorded job has expired' and were never attempted. Those cells are UNMEASURED, not refused. | reharvest 2026-08-23 venue A a 2-node pair recorded jobs estimator=extrapolated(1:4) build-hoisted freeze-hit | i2 gap harvest 2026-08-23 recorded jobs | campaign complete: 125 cells across worlds 2/4/8/16, estimator=extrapolated | N=8192 sample: 6 cells (cp16 D128/D256 both dir + D384 in, cp8 D128 in), a recorded job | K2 budgeted rounds: 57 cells re-harvested at their derived counts, a recorded job, 2026-08-23 | ladder 293/293 rc=0 (3 rollover casualties retried green); venue A the same cluster, free-running clocks | 85-cell rounds-convergence re-harvest, a 2-node H100 cluster, 2026-08-24. CLOCKS FREE-RUNNING. Re-harvested ONLY the 85 cells whose recorded rounds disagreed with rounds_for_cell; the other 218 carried over unchanged.",
+  "cells": [
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        128,
+        12288,
+        "incoming"
+      ],
+      "median_ms": 225.564036,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        128,
+        12288,
+        "outgoing"
+      ],
+      "median_ms": 226.543279,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        128,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 3.923637,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        128,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 3.907648,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        128,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 15.419179,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        128,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 15.344565,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        128,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 79.375003,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        128,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 79.486627,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        256,
+        12288,
+        "incoming"
+      ],
+      "median_ms": 611.204244,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        256,
+        12288,
+        "outgoing"
+      ],
+      "median_ms": 611.980509,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        256,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 6.958581,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        256,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 6.924427,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        256,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 32.454737,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        256,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 31.4283,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        256,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 185.710821,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        256,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 185.382858,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        384,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 12.727712,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        384,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 12.750166,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        384,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 58.414666,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        384,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 57.724353,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        384,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 370.361064,
+      "rel_std": 0.007121,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        384,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 378.463389,
+      "rel_std": 0.008763,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        512,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 17.758571,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        512,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 17.91681,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        512,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 95.955288,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        512,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 96.026031,
+      "rel_std": 0.007136,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        512,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 606.326375,
+      "rel_std": 0.005256,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp16",
+        512,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 602.302714,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        128,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 4.425066,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        128,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 4.383104,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        128,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 11.463552,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        128,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 11.353686,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        128,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 23.546668,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        128,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 23.712948,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        128,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 67.701127,
+      "rel_std": 0.006025,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        128,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 67.937721,
+      "rel_std": 0.006602,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        256,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 9.793131,
+      "rel_std": 0.006056
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        256,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 9.68577,
+      "rel_std": 0.005484
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        256,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 25.529088,
+      "rel_std": 0.009748,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        256,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 25.263273,
+      "rel_std": 0.006017,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        256,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 53.552977,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        256,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 52.442219,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        384,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 17.793889,
+      "rel_std": 0.005173
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        384,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 18.094049,
+      "rel_std": 0.010002
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        384,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 45.771445,
+      "rel_std": 0.006198,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        384,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 45.912256,
+      "rel_std": 0.006946,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        384,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 93.947348,
+      "rel_std": 0.006706,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        512,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 31.460609,
+      "rel_std": 0.005055,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        512,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 31.564075,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        512,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 78.02431,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2",
+        512,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 77.824415,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        128,
+        10048,
+        "outgoing"
+      ],
+      "median_ms": 358.417409,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        128,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 3.138283,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        128,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 3.840853,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        128,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 9.69103,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        128,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 10.580405,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        128,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 20.137397,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        128,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 23.940321,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        128,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 77.561646,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        128,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 80.834802,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        128,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 162.169322,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        128,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 174.541875,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        256,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 6.605643,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        256,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 8.018101,
+      "rel_std": 0.006501
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        256,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 21.951307,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        256,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 23.812693,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        256,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 45.471571,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        256,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 51.908069,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        256,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 161.071086,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        256,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 168.176636,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        384,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 12.168213,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        384,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 14.664918,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        384,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 38.571882,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        384,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 41.974646,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        384,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 78.657085,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        384,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 87.762288,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        384,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 281.015004,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        512,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 19.812607,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        512,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 22.997163,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        512,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 60.0348,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        512,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 63.314859,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        512,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 118.093834,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x2",
+        512,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 131.490102,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        128,
+        10048,
+        "incoming"
+      ],
+      "median_ms": 169.415929,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        128,
+        10048,
+        "outgoing"
+      ],
+      "median_ms": 173.197881,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        128,
+        12288,
+        "incoming"
+      ],
+      "median_ms": 286.320292,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        128,
+        12288,
+        "outgoing"
+      ],
+      "median_ms": 300.057007,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        128,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 1.865259,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        128,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 2.177621,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        128,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 4.853845,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        128,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 5.286304,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        128,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 10.148,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        128,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 11.680694,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        128,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 37.853211,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        128,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 39.427338,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        128,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 82.859461,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        128,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 89.001293,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        256,
+        10048,
+        "outgoing"
+      ],
+      "median_ms": 391.385437,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        256,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 4.38271,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        256,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 5.098635,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        256,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 13.155499,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        256,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 13.79215,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        256,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 26.841057,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        256,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 29.87695,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        256,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 90.542993,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        256,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 93.349852,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        256,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 186.892105,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        256,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 198.508077,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        384,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 9.002571,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        384,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 10.019807,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        384,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 26.070892,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        384,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 26.549974,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        384,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 51.33532,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        384,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 55.56024,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        384,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 157.139465,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        384,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 160.57047,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        384,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 343.211202,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        512,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 11.998517,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        512,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 13.441345,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        512,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 34.85447,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        512,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 35.757761,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        512,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 67.882634,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        512,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 73.862569,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        512,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 207.168284,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x4",
+        512,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 213.946548,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        128,
+        10048,
+        "incoming"
+      ],
+      "median_ms": 207.483988,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        128,
+        10048,
+        "outgoing"
+      ],
+      "median_ms": 162.808492,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        128,
+        12288,
+        "incoming"
+      ],
+      "median_ms": 342.74114,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        128,
+        12288,
+        "outgoing"
+      ],
+      "median_ms": 280.285604,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        128,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 5.336598,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        128,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 4.780341,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        128,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 11.491552,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        128,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 9.863904,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        128,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 19.732255,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        128,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 16.704779,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        128,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 53.990932,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        128,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 41.914812,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        128,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 129.017176,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        128,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 92.707581,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        256,
+        10048,
+        "incoming"
+      ],
+      "median_ms": 438.718943,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        256,
+        10048,
+        "outgoing"
+      ],
+      "median_ms": 354.178802,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        256,
+        12288,
+        "incoming"
+      ],
+      "median_ms": 707.739563,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        256,
+        12288,
+        "outgoing"
+      ],
+      "median_ms": 634.342672,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        256,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 8.931936,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        256,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 7.914933,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        256,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 20.295892,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        256,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 17.156587,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        256,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 38.325322,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        256,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 33.447397,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        256,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 109.109248,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        256,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 87.541748,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        256,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 275.720194,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        256,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 199.4163,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        384,
+        10048,
+        "incoming"
+      ],
+      "median_ms": 737.903971,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        384,
+        10048,
+        "outgoing"
+      ],
+      "median_ms": 724.796183,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        384,
+        12288,
+        "outgoing"
+      ],
+      "median_ms": 1176.458862,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        384,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 18.378784,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        384,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 14.099403,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        384,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 48.335836,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        384,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 30.705153,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        384,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 84.007161,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        384,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 60.094554,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        384,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 219.367706,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        384,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 173.837763,
+      "rel_std": 0.01098,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        384,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 416.257192,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        384,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 388.862488,
+      "rel_std": 0.008187,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        512,
+        10048,
+        "outgoing"
+      ],
+      "median_ms": 1019.881409,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        512,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 26.028822,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        512,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 19.585258,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        512,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 61.870726,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        512,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 44.037313,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        512,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 112.819242,
+      "rel_std": 0.005627,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        512,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 98.377968,
+      "rel_std": 0.006251,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        512,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 254.935811,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        512,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 281.035828,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        512,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 584.412292,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp2x8",
+        512,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 619.100891,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        128,
+        10048,
+        "outgoing"
+      ],
+      "median_ms": 247.141373,
+      "rel_std": 0.007755,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        128,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 2.978069,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        128,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 2.870976,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        128,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 7.510677,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        128,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 7.121088,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        128,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 15.530785,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        128,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 15.105963,
+      "rel_std": 0.010809
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        128,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 44.078468,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        128,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 47.301882,
+      "rel_std": 0.018076,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        128,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 98.283293,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        128,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 95.195541,
+      "rel_std": 0.012476,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        256,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 6.313259,
+      "rel_std": 0.006611
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        256,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 6.444821,
+      "rel_std": 0.006725
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        256,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 16.263285,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        256,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 20.890261,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        256,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 34.069743,
+      "rel_std": 0.005355,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        256,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 44.811889,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        256,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 154.465429,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        256,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 151.065069,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        384,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 10.590123,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        384,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 10.665888,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        384,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 25.569055,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        384,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 25.228577,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        384,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 52.001722,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        384,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 51.172187,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        384,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 147.714498,
+      "rel_std": 0.007825,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        512,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 16.979062,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        512,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 17.071028,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        512,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 41.734479,
+      "rel_std": 0.005023,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        512,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 39.986064,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        512,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 82.768464,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4",
+        512,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 81.886237,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        128,
+        10048,
+        "incoming"
+      ],
+      "median_ms": 218.29363,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        128,
+        10048,
+        "outgoing"
+      ],
+      "median_ms": 161.148183,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        128,
+        12288,
+        "incoming"
+      ],
+      "median_ms": 327.352061,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        128,
+        12288,
+        "outgoing"
+      ],
+      "median_ms": 274.648448,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        128,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 7.429909,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        128,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 4.580074,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        128,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 12.013749,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        128,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 9.773184,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        128,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 19.667734,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        128,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 16.406954,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        128,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 54.394912,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        128,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 41.796064,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        128,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 131.95074,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        128,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 91.937364,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        256,
+        10048,
+        "incoming"
+      ],
+      "median_ms": 451.518168,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        256,
+        10048,
+        "outgoing"
+      ],
+      "median_ms": 352.672496,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        256,
+        12288,
+        "incoming"
+      ],
+      "median_ms": 666.330973,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        256,
+        12288,
+        "outgoing"
+      ],
+      "median_ms": 633.079936,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        256,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 12.846731,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        256,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 7.600608,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        256,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 21.052544,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        256,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 16.857942,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        256,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 38.622485,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        256,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 33.277917,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        256,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 107.703466,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        256,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 87.101719,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        256,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 278.948415,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        256,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 198.794164,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        384,
+        10048,
+        "incoming"
+      ],
+      "median_ms": 757.388245,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        384,
+        10048,
+        "outgoing"
+      ],
+      "median_ms": 722.9139,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        384,
+        12288,
+        "outgoing"
+      ],
+      "median_ms": 1174.720662,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        384,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 19.014421,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        384,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 13.614102,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        384,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 51.361282,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        384,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 30.246815,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        384,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 91.719461,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        384,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 60.071116,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        384,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 231.429392,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        384,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 172.534342,
+      "rel_std": 0.010099,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        384,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 432.026215,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        384,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 388.32488,
+      "rel_std": 0.008801,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        512,
+        10048,
+        "outgoing"
+      ],
+      "median_ms": 1015.547831,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        512,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 26.958986,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        512,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 19.048436,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        512,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 62.947585,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        512,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 43.193366,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        512,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 122.305878,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        512,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 98.509703,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        512,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 309.493988,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        512,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 281.791473,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        512,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 595.085246,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp4x4",
+        512,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 617.652527,
+      "rel_std": 0.005724,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        128,
+        10048,
+        "incoming"
+      ],
+      "median_ms": 94.389626,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        128,
+        10048,
+        "outgoing"
+      ],
+      "median_ms": 120.630712,
+      "rel_std": 0.007093,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        128,
+        12288,
+        "incoming"
+      ],
+      "median_ms": 163.831278,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        128,
+        12288,
+        "outgoing"
+      ],
+      "median_ms": 208.778941,
+      "rel_std": 0.006193,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        128,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 1.771893,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        128,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 1.725835,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        128,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 4.045942,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        128,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 3.828331,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        128,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 8.412064,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        128,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 7.923157,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        128,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 23.508735,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        128,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 23.346795,
+      "rel_std": 0.010453,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        128,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 51.590594,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        128,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 50.376212,
+      "rel_std": 0.011821,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        256,
+        10048,
+        "outgoing"
+      ],
+      "median_ms": 285.96933,
+      "rel_std": 0.005222,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        256,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 4.253813,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        256,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 4.165728,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        256,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 10.634123,
+      "rel_std": 0.006481,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        256,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 10.084459,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        256,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 21.759755,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        256,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 20.927776,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        256,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 57.632912,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        256,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 63.164047,
+      "rel_std": 0.013444,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        256,
+        8192,
+        "incoming"
+      ],
+      "median_ms": 125.292948,
+      "rel_std": 0.005207,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        256,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 124.553401,
+      "rel_std": 0.010469,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        384,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 8.656778,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        384,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 8.613984,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        384,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 20.261045,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        384,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 19.620853,
+      "rel_std": 0.005,
+      "rounds": 35
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        384,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 40.016455,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        384,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 38.868458,
+      "rel_std": 0.005,
+      "rounds": 18
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        384,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 100.369352,
+      "rel_std": 0.005242,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        384,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 95.826794,
+      "rel_std": 0.005,
+      "rounds": 8
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        384,
+        8192,
+        "outgoing"
+      ],
+      "median_ms": 208.632319,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        512,
+        2048,
+        "incoming"
+      ],
+      "median_ms": 11.306294,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        512,
+        2048,
+        "outgoing"
+      ],
+      "median_ms": 11.254091,
+      "rel_std": 0.005
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        512,
+        3008,
+        "incoming"
+      ],
+      "median_ms": 26.170346,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        512,
+        3008,
+        "outgoing"
+      ],
+      "median_ms": 25.634825,
+      "rel_std": 0.005,
+      "rounds": 25
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        512,
+        4096,
+        "incoming"
+      ],
+      "median_ms": 51.37168,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        512,
+        4096,
+        "outgoing"
+      ],
+      "median_ms": 50.456948,
+      "rel_std": 0.005,
+      "rounds": 12
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        512,
+        5952,
+        "incoming"
+      ],
+      "median_ms": 128.737055,
+      "rel_std": 0.005,
+      "rounds": 5
+    },
+    {
+      "key": [
+        "workflow",
+        "cp8",
+        512,
+        5952,
+        "outgoing"
+      ],
+      "median_ms": 125.869354,
+      "rel_std": 0.005,
+      "rounds": 5
+    }
+  ],
+  "estimator": "extrapolated"
+}
